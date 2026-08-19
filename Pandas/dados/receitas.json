@@ -1,8 +1,8 @@
 {
-    "receitas": [
+    "Receitas": [
         {
-            "titulo": "Bolo de Chocolate",
-            "tempo_preparo": "45 minutos",
+            "título": "Bolo de Chocolate",
+            "tempo_preparo": "45 min",
             "porcoes": 8,
             "ingredientes": [
                 {
@@ -28,12 +28,12 @@
             ]
         },
         {
-            "titulo": "Salada Caesar",
+            "título": "Salada Caesar",
             "tempo_preparo": "20 minutos",
             "porcoes": 4,
             "ingredientes": [
                 {
-                    "ingrediente": "Alface romana",
+                    "ingrediente": "Alface Romana",
                     "quantidade": "1 cabeça"
                 },
                 {
@@ -51,7 +51,7 @@
             ]
         },
         {
-            "titulo": "Pasta ao Pesto",
+            "título": "Pasta ao Pesto",
             "tempo_preparo": "30 minutos",
             "porcoes": 2,
             "ingredientes": [
@@ -72,7 +72,7 @@
                     "quantidade": "1/4 xícara"
                 },
                 {
-                    "ingrediente": "Queijo parmesão",
+                    "ingrediente": "Queijo Parmesão",
                     "quantidade": "1/4 xícara"
                 }
             ]
