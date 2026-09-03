@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 
-with open('dados/vendas.json') as file:
+with open('Dashboard_Vendas/dados/vendas.json') as file:
     data = json.load(file)
 
 df = pd.DataFrame(data)
