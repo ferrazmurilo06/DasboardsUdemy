@@ -1,5 +1,7 @@
 from dataset import df
 import pandas as pd
+import streamlit as st
+import time 
 
 def format_number(value, prefix = ''):
     for unit in ['', 'mil']:
@@ -17,7 +19,17 @@ df_receita_mensal['Mês'] = df_receita_mensal['Data da Compra'].dt.month_name()
 
 
 df_categoria = df.groupby('Categoria do Produto')[['Preço']].sum().sort_values(by='Preço', ascending=False)
-print(df_categoria.head())
 
 df_vendedores = pd.DataFrame(df.groupby('Vendedor')['Preço'].agg(['sum', 'count']))
-print(df_vendedores)
+
+@st.cache_data
+def convert_csv(df):
+    return df.to_csv().encode('utf-8')
+
+def mensagem_sucesso():
+    success = st.success(
+        'Download concluído com sucesso!',
+        icon="✅",
+        )
+    time.sleep(3)
+    success.empty()

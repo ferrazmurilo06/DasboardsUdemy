@@ -7,6 +7,16 @@ from graficos import grafico_mapa_estado, grafico_receita_mensal, grafico_receit
 st.title("Dashboard de Vendas :shopping_cart:")
 st.set_page_config(page_title="Dashboard de Vendas", page_icon=":bar_chart:", layout="wide")
 
+st.sidebar.title("Filtro de Vendedores")
+filtro_vendedor = st.sidebar.multiselect(
+    'Vendedores',
+    df['Vendedor'].unique(),
+
+)
+
+if filtro_vendedor:
+    df = df[df['Vendedor'].isin(filtro_vendedor)]
+
 aba1, aba2, aba3 = st.tabs(['Dataset', 'Receita', 'Vendedores'])
 
 with aba1:
