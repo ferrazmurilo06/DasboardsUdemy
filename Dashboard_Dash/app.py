@@ -31,6 +31,23 @@ boxplot.add_annotation(
     align='center'
 )
 
+dados["Survived"] = dados["Survived"].astype(int)
+dados["Pclass"] = dados["Pclass"].astype(int)
+
+sobrevivencia_class = dados.groupby("Pclass")["Survived"].mean().reset_index()
+grafico_class = px.bar(sobrevivencia_class, x="Pclass", 
+                       y="Survived", 
+                       title="Taxa de Sobrevivência por classe.", 
+                       labels={"Survived": "Taxa de sobrevivência"}, 
+                       text="Survived")
+
+sobrevivencia_sexo = dados.groupby("Sex")["Survived"].mean().reset_index()
+grafico_sexo = px.bar(sobrevivencia_sexo, x="Sex", 
+                      y="Survived", 
+                      title="Taxa de Sobrevivência por Sexo.", 
+                      labels={"Survived": "Taxa de sobrevivência"}, 
+                      text="Survived")
+
 app = Dash(__name__)
 
 app.layout = html.Div([
@@ -42,6 +59,14 @@ app.layout = html.Div([
     html.Div([
         html.H2("Boxplot de Idades"),
         dcc.Graph(figure=boxplot)
+    ]),
+    html.Div([
+        html.H2("Gráfico de Barras da Taxa de Sobrevivência"),
+        dcc.Graph(figure=grafico_class)
+    ]),
+    html.Div([
+        html.H2("Gáfico de Barras da Taxa de Sobrevivência por Sexo"),
+        dcc.Graph(figure=grafico_sexo)
     ])
 ])
 
