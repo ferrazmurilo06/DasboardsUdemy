@@ -5,10 +5,9 @@ import joblib
 import pandas as pd
 import numpy as np
 import xgboost as xgb
+from app import app
 
 modelo = joblib.load("Dashboard_Dash/model_titanic.pkl")
-
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 formulario = dbc.Container([
         dbc.Row([
@@ -59,7 +58,7 @@ formulario = dbc.Container([
     ])
 
 
-app.layout = html.Div([
+layout = html.Div([
     html.H1("Previsão de sobrevivência no Titanic", className='text center mt-5'),
     formulario,
     html.Div(id="previsao")
@@ -104,6 +103,3 @@ def prever_sobrevivencia(n_clicks, idade, sexo, classe, tarifa, siblings, parent
     alerta = dbc.Alert(msg, color=cor_alerta, className="d-flex justify-content-center mb-5")
     return alerta
 
-
-
-app.run(debug=True)
